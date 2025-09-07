@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+
+    <title>Fashion Boutique | Premium Clothing</title>
+    <style>
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Header styles */
+      header {
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        z-index: 100;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 5%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #2c3e50;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #2c3e50;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #3498db;
+      }
+
+      /* Hero section */
+      .hero {
+        height: 100vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+          url("/api/placeholder/1200/800") center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        padding-top: 70px;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        padding: 0 20px;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.8rem 2rem;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #2980b9;
+      }
+
+      /* Featured products section */
+      .featured {
+        padding: 5rem 5%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        color: #2c3e50;
+      }
+
+      .products {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .product-card {
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .product-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .product-img {
+        height: 250px;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .product-info {
+        padding: 1.5rem;
+      }
+
+      .product-title {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .product-price {
+        font-weight: 700;
+        color: #3498db;
+      }
+
+      /* About section */
+      .about {
+        background-color: #f8f9fa;
+        padding: 5rem 5%;
+      }
+
+      .about-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+      }
+
+      .about-img {
+        flex: 1;
+        height: 400px;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-text h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: #2c3e50;
+      }
+
+      .about-text p {
+        margin-bottom: 1rem;
+      }
+
+      /* Newsletter section */
+      .newsletter {
+        padding: 5rem 5%;
+        background-color: #2c3e50;
+        color: #fff;
+        text-align: center;
+      }
+
+      .newsletter-content {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .newsletter h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .newsletter p {
+        margin-bottom: 2rem;
+      }
+
+      .newsletter-form {
+        display: flex;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .newsletter-input {
+        flex: 1;
+        padding: 0.8rem;
+        border: none;
+        border-radius: 4px 0 0 4px;
+        font-size: 1rem;
+      }
+
+      .newsletter-btn {
+        padding: 0.8rem 1.5rem;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 0 4px 4px 0;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #1a252f;
+        color: #fff;
+        padding: 3rem 5%;
+        text-align: center;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .social-links {
+        margin: 1.5rem 0;
+      }
+
+      .social-links a {
+        color: #fff;
+        margin: 0 0.5rem;
+        font-size: 1.5rem;
+        text-decoration: none;
+      }
+
+      .copyright {
+        margin-top: 2rem;
+        color: #bdc3c7;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .about-content {
+          flex-direction: column;
+        }
+
+        .newsletter-form {
+          flex-direction: column;
+        }
+
+        .newsletter-input {
+          border-radius: 4px;
+          margin-bottom: 1rem;
+        }
+
+        .newsletter-btn {
+          border-radius: 4px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Widget Loader Script -->
+    <script>
+      (function () {
+        console.log("Initializing Bliz Widget...");
+        /*
+            Input Your Link Here
+        */
+        var widgetURL = "http://localhost:3003/nDf0QT";
+        if (window.dataLayer && Array.isArray(window.dataLayer)) {
+          for (let i = window.dataLayer.length - 1; i >= 0; i--) {
+            if (window.dataLayer[i].widgetURL) {
+              widgetURL = window.dataLayer[i].widgetURL.trim();
+              break;
+            }
+          }
+        }
+
+        var e = widgetURL;
+        var t = "widgetShown";
+        var n = 90000; // Cookie expiration in seconds (25 hours)
+
+        // Don't show if already seen or widget already exists
+        if (
+          document.cookie.indexOf(t + "=true") !== -1 ||
+          document.getElementById("bliz__overlay_container")
+        )
+          return;
+
+        // Create overlay container
+        var o = document.createElement("div");
+        o.id = "bliz__overlay_container";
+        o.className = "bliz__overlay";
+        o.style.cssText =
+          "position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);z-index:9999;display:flex;justify-content:center;align-items:center;";
+        o.innerHTML =
+          '<iframe src="' +
+          e +
+          '" class="bliz__iframe" style="position:absolute;top:0;left:0;width:100vw;height:100vh;border:none;" title="Promotion Widget"></iframe>' +
+          '<button id="bliz__close_btn" class="bliz__close_btn" style="position:absolute;top:20px;right:20px;background:#fff;border-radius:50%;width:40px;height:40px;border:2px solid #000;cursor:pointer;font-size:24px;font-weight:bold;z-index:10000;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 5px rgba(0,0,0,0.2);color:#000;">×</button>';
+
+        document.body.appendChild(o);
+
+        // Function to close overlay and set cookie
+        function closeOverlay() {
+          if (o && o.parentNode) {
+            o.parentNode.removeChild(o);
+            document.cookie = t + "=true; path=/; max-age=" + n;
+            console.log("Widget overlay closed and cookie set.");
+          }
+        }
+
+        // Close on manual click
+        var btn = document.getElementById("bliz__close_btn");
+        if (btn) {
+          btn.addEventListener("click", function () {
+            closeOverlay();
+            // Optional: Notify iframe it was closed manually
+            const iframe = o.querySelector("iframe");
+            if (iframe && iframe.contentWindow) {
+              iframe.contentWindow.postMessage("closeWidget", "*");
+            }
+          });
+        }
+
+        // Close on overlay click (outside iframe)
+        o.addEventListener("click", function (event) {
+          if (event.target === o) closeOverlay();
+        });
+
+        // Close on ESC key
+        document.addEventListener("keydown", function (event) {
+          if (event.keyCode === 27) closeOverlay(); // ESC key
+        });
+
+        // Legacy close message (string-based)
+        window.addEventListener("message", function (event) {
+          try {
+            if (typeof event.data === "string" && event.data === "closeWidget") {
+              closeOverlay();
+            }
+          } catch (err) {
+            console.error("Legacy widget postMessage error:", err);
+          }
+        });
+      })();
+    </script>
+
+    <!-- 🚀 Bliz Widget Event Listener — DEMO READY -->
+    <script>
+      /**
+       * LISTEN FOR WIDGET EVENTS FROM IFRAME
+       * This is where you handle real user interactions from Bliz widget.
+       * Events include: WIDGET_VIEW, WIDGET_INTERACTION, WIDGET_SUBMIT
+       * 
+       * On WIDGET_SUBMIT, you typically receive promo data, customer info, etc.
+       * Use this to:
+       *   - Redirect user to checkout with promo code
+       *   - Send lead to CRM
+       *   - Fire analytics event
+       *   - Trigger email sequence
+       */
+
+      function handleBlizWidgetEvent(event) {
+        // 🔐 SECURITY: In production, validate origin
+        // if (event.origin !== 'https://bliz.cc') return;
+
+        const data = event.data;
+
+        // Check if it's a Bliz widget event
+        if (data && data.widgetId && data.event) {
+          console.log("✅ Bliz Widget Event Received:", data);
+
+          // Handle different event types
+          switch (data.event) {
+            case "WIDGET_VIEW":
+              console.log("👁️ Widget viewed by user");
+              // You can trigger analytics here
+              break;
+
+            case "WIDGET_INTERACTION":
+              console.log("🖱️ User interacted with widget");
+              // Track engagement or warm up retargeting pixel
+              break;
+
+            case "WIDGET_SUBMIT":
+              console.log("🎉 User submitted widget!", data);
+
+              // 💡 DEMO: Close overlay automatically on submit
+              const overlay = document.getElementById("bliz__overlay_container");
+              if (overlay && overlay.parentNode) {
+                overlay.parentNode.removeChild(overlay);
+                document.cookie = "widgetShown=true; path=/; max-age=90000";
+                console.log("Widget overlay auto-closed after submission.");
+              }
+
+              // 💡 DEMO: Log received promo data (you would use this in real app)
+              if (data.promo) {
+                console.log("🎁 Promo Details:", data.promo);
+                console.log("📋 Apply this promo code at checkout:", data.promo.prize);
+                
+                // 💡 EXAMPLE: Redirect to checkout with promo
+                // window.location.href = `/checkout?promo=${encodeURIComponent(data.promo.id)}`;
+
+                // 💡 EXAMPLE: Send to CRM or backend
+                // fetch('/api/leads', {
+                //   method: 'POST',
+                //   headers: { 'Content-Type': 'application/json' },
+                //   body: JSON.stringify({
+                //     email: data.customer,
+                //     promoCode: data.promo.prize,
+                //     widgetId: data.widgetId,
+                //     timestamp: data.timestamp
+                //   })
+                // });
+              }
+
+              // 💡 EXAMPLE: Push to GTM dataLayer for analytics
+              if (window.dataLayer) {
+                window.dataLayer.push({
+                  event: "blizWidgetSubmit",
+                  widgetId: data.widgetId,
+                  promoId: data.promoId,
+                  promoTitle: data.promo?.title,
+                  promoCode: data.promo?.prize,
+                  customer: data.customer,
+                  timestamp: data.timestamp,
+                });
+                console.log("📈 Event pushed to dataLayer for analytics.");
+              }
+
+              break;
+
+            default:
+              console.log("📝 Unhandled event type:", data.event);
+          }
+        }
+      }
+
+      // Add event listener
+      window.addEventListener("message", handleBlizWidgetEvent);
+
+      // Cleanup on page unload (optional)
+      window.addEventListener("beforeunload", () => {
+        window.removeEventListener("message", handleBlizWidgetEvent);
+      });
+
+      console.log("🚀 Bliz Widget Event Listener is active. Try submitting the widget!");
+    </script>
+
+    <!-- Header -->
+    <header>
+      <nav class="navbar">
+        <div class="logo">FashionHub</div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#featured">Products</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>Elevate Your Style Demo Website</h1>
+        <p>
+          Discover our premium collection of fashion essentials curated for the
+          modern trendsetter.
+        </p>
+        <a href="#featured" class="btn">Shop Collection</a>
+      </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="featured" id="featured">
+      <h2 class="section-title">Featured Products</h2>
+      <div class="products">
+        <div class="product-card">
+          <img
+            src="/api/placeholder/300/300"
+            alt="Product"
+            class="product-img"
+          />
+          <div class="product-info">
+            <h3 class="product-title">Classic White Tee</h3>
+            <p class="product-price">$29.99</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <img
+            src="/api/placeholder/300/300"
+            alt="Product"
+            class="product-img"
+          />
+          <div class="product-info">
+            <h3 class="product-title">Denim Jacket</h3>
+            <p class="product-price">$89.99</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <img
+            src="/api/placeholder/300/300"
+            alt="Product"
+            class="product-img"
+          />
+          <div class="product-info">
+            <h3 class="product-title">Summer Dress</h3>
+            <p class="product-price">$59.99</p>
+          </div>
+        </div>
+        <div class="product-card">
+          <img
+            src="/api/placeholder/300/300"
+            alt="Product"
+            class="product-img"
+          />
+          <div class="product-info">
+            <h3 class="product-title">Slim Fit Pants</h3>
+            <p class="product-price">$49.99</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+      <div class="about-content">
+        <img src="/api/placeholder/600/400" alt="About Us" class="about-img" />
+        <div class="about-text">
+          <h2>Our Story</h2>
+          <p>
+            Founded in 2010, FashionHub has been at the forefront of sustainable
+            and ethical fashion. We believe in creating timeless pieces that not
+            only look good but also feel good.
+          </p>
+          <p>
+            Our team of dedicated designers work tirelessly to bring you the
+            latest trends while ensuring that our production processes remain
+            environmentally friendly and socially responsible.
+          </p>
+          <p>
+            We source our materials from certified suppliers who share our
+            vision of a fashion industry that respects both people and the
+            planet.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter" id="contact">
+      <div class="newsletter-content">
+        <h2>Join Our Community</h2>
+        <p>
+          Subscribe to our newsletter and be the first to know about new
+          collections, exclusive offers, and fashion tips.
+        </p>
+        <form class="newsletter-form">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            class="newsletter-input"
+            required
+          />
+          <button type="submit" class="newsletter-btn">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="logo">FashionHub</div>
+        <div class="social-links">
+          <a href="#">Facebook</a>
+          <a href="#">Instagram</a>
+          <a href="#">Twitter</a>
+          <a href="#">Pinterest</a>
+        </div>
+        <p>123 Fashion Street, Style City, SC 12345</p>
+        <p>Email: info@fashionhub.com | Phone: (123) 456-7890</p>
+        <p class="copyright">© 2025 FashionHub. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Initialize Widget via GTM-style dataLayer -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "pageLoaded",
+        widgetURL: "https://bliz.cc/suwv", // Dynamic URL from your Bliz dashboard
+      });
+    </script>
+  </body>
+</html>

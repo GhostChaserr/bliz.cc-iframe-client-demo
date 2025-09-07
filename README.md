@@ -72,3 +72,34 @@ export interface IframePayloadArgs {
 ```
 
 
+
+---
+
+## 🌍 Origin Check (Security Feature)
+
+To prevent unauthorized embedding of your widgets, Bliz.cc now supports **Allowed Origin validation**.
+
+### How it works
+- As a customer, you can configure an **Allowed Origin** (e.g., `https://yourstore.com`) in the Bliz dashboard.
+- When a widget is requested, our system will **compare the request’s `Referer` header** against your configured origin.
+- If the request **does not match**, the widget will **not render** and instead display an **Access Denied** page.
+
+### Example
+If your allowed origin is:
+
+
+✅ These requests are allowed:
+- `https://yourstore.com/checkout`
+- `https://yourstore.com/summer-sale`
+
+❌ These requests are blocked:
+- `https://malicious-site.com/your-widget`
+- `http://yourstore.com` (protocol mismatch)
+- `https://sub.yourstore.com` (different subdomain)
+
+### Why this matters
+- Prevents **hotlinking** and **clickjacking** on unauthorized domains.
+- Ensures only **your domains** can display your interactive widgets.
+- Keeps your promo codes, campaigns, and analytics data secure.
+
+> ⚠️ **Note**: If you do not set an Allowed Origin, widgets will be accessible from anywhere.
